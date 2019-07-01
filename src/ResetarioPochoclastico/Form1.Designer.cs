@@ -237,7 +237,7 @@
             // 
             // comprar_ingr_button
             // 
-            this.comprar_ingr_button.Location = new System.Drawing.Point(637, 264);
+            this.comprar_ingr_button.Location = new System.Drawing.Point(637, 271);
             this.comprar_ingr_button.Name = "comprar_ingr_button";
             this.comprar_ingr_button.Size = new System.Drawing.Size(100, 23);
             this.comprar_ingr_button.TabIndex = 21;

@@ -44,7 +44,7 @@ namespace ResetarioPochoclastico
             {
                 ingredientes_listBox.Items.Add(ingrediente);
             }
-            foreach (Receta receta in controlador.Recetas)
+            foreach (Receta receta in controlador.ListRecetas)
             {
                 recetas_listBox.Items.Add(receta);
             }

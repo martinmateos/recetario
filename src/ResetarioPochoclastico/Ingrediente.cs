@@ -8,9 +8,10 @@ namespace ResetarioPochoclastico
 {
     public class Ingrediente
     {
-        public string NombreIngrediente { get; set; }
+        public string Nombre { get; set; }
         public int Cantidad { get; set; }
-        public double CostoIngrediente { get; set; }
+        public double Costo { get; set; }
+        public int StockMinimo { get; set; }
 
     }
 }

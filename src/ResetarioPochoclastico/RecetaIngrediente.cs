@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ResetarioPochoclastico
 {
-    public class Receta
+    public class RecetaIngrediente
     {
-        public string Nombre { get; set; }
-        public List<RecetaIngrediente> Ingredientes { get; set; }
+        public Ingrediente Ingrediente { get; set; }
+        public int Cantidad { get; set; }
     }
 }
