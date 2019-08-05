@@ -10,8 +10,14 @@ namespace ResetarioPochoclastico
     {
         public string Nombre { get; set; }
         public int Cantidad { get; set; }
-        public double Costo { get; set; }
+        public decimal Costo { get; set; }
         public int StockMinimo { get; set; }
-
+        public string MostrarDatos
+        {
+            get
+            {
+                return Nombre;
+            }
+        }
     }
 }

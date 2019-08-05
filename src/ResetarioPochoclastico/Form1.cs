@@ -20,33 +20,48 @@ namespace ResetarioPochoclastico
             controlador = new Controlador();//existe 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Pasaje_Click(object sender, EventArgs e)
         {
-
+            Form2 form2 = new Form2();  // Abre la ventana de Form2, donde estan las recetas.
+            form2.ShowDialog();
         }
 
-        private void ModificarIngrediente_button_Click(object sender, EventArgs e)
+     
+        private void comprar_ingr_button_Click(object sender, EventArgs e)
         {
-
+            controlador.AgregarIngredientes(ingrediente_textbox.Text, int.Parse(Cantidad_textbox.Text), int.Parse(Precio_textbox.Text), int.Parse(PdP_textbox.Text));
+            RefrescarListBox();
         }
 
         private void borrar_ingr_button_Click(object sender, EventArgs e)
         {
-            Ingrediente ingrediente = ingredientes_listBox.SelectedItem as Ingrediente;
-            controlador.BorrarIngredientes(ingrediente);
-            Refrescar();
+            controlador.BorrarIngredientes(ingredientes_listBox.SelectedItem as Ingrediente);
+            RefrescarListBox();
         }
-        private void Refrescar()
+
+        private void mod_ingr_button_Click(object sender, EventArgs e)
+        {
+            controlador.ModIngrediente(ingredientes_listBox.SelectedItem as Ingrediente, ingrediente_textbox.Text, int.Parse(Cantidad_textbox.Text), int.Parse(Precio_textbox.Text), int.Parse(PdP_textbox.Text));
+            RefrescarListBox();
+        }
+        private void RefrescarListBox()
         {
             ingredientes_listBox.Items.Clear();
-            recetas_listBox.Items.Clear();
             foreach (Ingrediente ingrediente in controlador.ListIngredientes)
             {
-                ingredientes_listBox.Items.Add(ingrediente);
+                ingredientes_listBox.Items.Add(ingrediente); // Agrega los ingredientes a la ListBox
             }
-            foreach (Receta receta in controlador.ListRecetas)
+        }
+
+        private void ingredientes_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Ingrediente ingrediente = ingredientes_listBox.SelectedItem as Ingrediente; // Muestra los datos del Ingrediente seleccionados en los TextBox
+            if (ingrediente != null)
             {
-                recetas_listBox.Items.Add(receta);
+                ingrediente_textbox.Text = ingrediente.Nombre;
+                Cantidad_textbox.Text = ingrediente.Cantidad.ToString();
+                Precio_textbox.Text = ingrediente.Costo.ToString();
+                PdP_textbox.Text = ingrediente.StockMinimo.ToString();
             }
         }
     }

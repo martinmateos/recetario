@@ -36,16 +36,22 @@ namespace ResetarioPochoclastico
             receta.Ingredientes = ingredientes;
             receta.Nombre = nombreReceta;
         }
+        public void HacerReceta (Receta receta, string nombreReceta, List<RecetaIngrediente> ingredientes)
+        {
+           
+        }
         //-----
 
         //abm de ingrediente
-        public void AgregarIngredientes (string nombreIngrediente, int cantidad, double costoIngrediente)
+        public void AgregarIngredientes (string nombreIngrediente, int cantidad, decimal costoIngrediente, int puntoDePedido)
         {
             Ingrediente ingrediente = new Ingrediente()
             {
                 Nombre = nombreIngrediente,
                 Cantidad = cantidad,
-                Costo = costoIngrediente
+                Costo = costoIngrediente,
+                StockMinimo = puntoDePedido
+
             };
             ListIngredientes.Add(ingrediente);
         }
@@ -53,11 +59,12 @@ namespace ResetarioPochoclastico
         {
             ListIngredientes.Remove(ingrediente);
         }
-        public void ModIngrediente (Ingrediente ingrediente, string nombreIngrediente, int cantidad, double costoIngrediente)
+        public void ModIngrediente (Ingrediente ingrediente, string nombreIngrediente, int cantidad, decimal costoIngrediente, int puntoDePedido)
         {
             ingrediente.Nombre = nombreIngrediente;
             ingrediente.Cantidad = cantidad;
             ingrediente.Costo = costoIngrediente;
+            ingrediente.StockMinimo = puntoDePedido;
         }
         //-----
 
