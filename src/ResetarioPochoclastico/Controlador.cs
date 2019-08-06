@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace ResetarioPochoclastico
 {
-    class Controlador
+     public static class  Controlador // clase estatica, se relaciona con las demas clases declarando solo con su nombre
     {
-        public List<Receta> ListRecetas { get; }
-        public List<Ingrediente> ListIngredientes { get; }
-        public List<RecetaIngrediente> ListRecetaIngredientes { get; }
-        public Controlador()
+        public static List<Receta> ListRecetas { get; }
+        public static List<Ingrediente> ListIngredientes { get; }
+        public static List<RecetaIngrediente> ListRecetaIngredientes { get; }
+         static Controlador()
         {
             ListRecetas = new List<Receta>();
             ListIngredientes = new List<Ingrediente>();
             ListRecetaIngredientes = new List<RecetaIngrediente>();
         }
         //abm receta
-        public void AgregarReceta (string nombreReceta, List<RecetaIngrediente> ingredientes )
+        public static void AgregarReceta (string nombreReceta, List<RecetaIngrediente> ingredientes )
         {
             Receta receta = new Receta()
             {
@@ -27,23 +27,23 @@ namespace ResetarioPochoclastico
             };
             ListRecetas.Add(receta);
         }
-        public void BorrarReceta (Receta receta)
+        public static void BorrarReceta (Receta receta)
         {
             ListRecetas.Remove(receta);
         }
-        public void ModReceta (Receta receta, string nombreReceta, List<RecetaIngrediente> ingredientes)
+        public static void ModReceta (Receta receta, string nombreReceta, List<RecetaIngrediente> ingredientes)
         {
             receta.Ingredientes = ingredientes;
             receta.Nombre = nombreReceta;
         }
-        public void HacerReceta (Receta receta, string nombreReceta, List<RecetaIngrediente> ingredientes)
+        public static void HacerReceta (Receta receta, string nombreReceta, List<RecetaIngrediente> ingredientes)
         {
            
         }
         //-----
 
         //abm de ingrediente
-        public void AgregarIngredientes (string nombreIngrediente, int cantidad, decimal costoIngrediente, int puntoDePedido)
+        public static void AgregarIngredientes (string nombreIngrediente, int cantidad, decimal costoIngrediente, int puntoDePedido)
         {
             Ingrediente ingrediente = new Ingrediente()
             {
@@ -55,11 +55,11 @@ namespace ResetarioPochoclastico
             };
             ListIngredientes.Add(ingrediente);
         }
-        public void BorrarIngredientes(Ingrediente ingrediente)
+        public static void BorrarIngredientes(Ingrediente ingrediente)
         {
             ListIngredientes.Remove(ingrediente);
         }
-        public void ModIngrediente (Ingrediente ingrediente, string nombreIngrediente, int cantidad, decimal costoIngrediente, int puntoDePedido)
+        public static void ModIngrediente (Ingrediente ingrediente, string nombreIngrediente, int cantidad, decimal costoIngrediente, int puntoDePedido)
         {
             ingrediente.Nombre = nombreIngrediente;
             ingrediente.Cantidad = cantidad;
@@ -70,7 +70,7 @@ namespace ResetarioPochoclastico
 
         //abm RecetaIngrediente
 
-        public void AddRecetaIngrediente (Receta receta, Ingrediente ingrediente, int cantidad)
+        public static void AddRecetaIngrediente (Receta receta, Ingrediente ingrediente, int cantidad)
         {
             RecetaIngrediente recetaIngrediente = new RecetaIngrediente()
             {

@@ -12,12 +12,9 @@ namespace ResetarioPochoclastico
 {
     public partial class Form1 : Form
     {
-        Controlador controlador;//menciona
-
         public Form1()
         {
             InitializeComponent();
-            controlador = new Controlador();//existe 
         }
 
         private void Pasaje_Click(object sender, EventArgs e)
@@ -29,25 +26,25 @@ namespace ResetarioPochoclastico
      
         private void comprar_ingr_button_Click(object sender, EventArgs e)
         {
-            controlador.AgregarIngredientes(ingrediente_textbox.Text, int.Parse(Cantidad_textbox.Text), int.Parse(Precio_textbox.Text), int.Parse(PdP_textbox.Text));
+            Controlador.AgregarIngredientes(ingrediente_textbox.Text, int.Parse(Cantidad_textbox.Text), int.Parse(Precio_textbox.Text), int.Parse(PdP_textbox.Text));
             RefrescarListBox();
         }
 
         private void borrar_ingr_button_Click(object sender, EventArgs e)
         {
-            controlador.BorrarIngredientes(ingredientes_listBox.SelectedItem as Ingrediente);
+            Controlador.BorrarIngredientes(ingredientes_listBox.SelectedItem as Ingrediente);
             RefrescarListBox();
         }
 
         private void mod_ingr_button_Click(object sender, EventArgs e)
         {
-            controlador.ModIngrediente(ingredientes_listBox.SelectedItem as Ingrediente, ingrediente_textbox.Text, int.Parse(Cantidad_textbox.Text), int.Parse(Precio_textbox.Text), int.Parse(PdP_textbox.Text));
+            Controlador.ModIngrediente(ingredientes_listBox.SelectedItem as Ingrediente, ingrediente_textbox.Text, int.Parse(Cantidad_textbox.Text), int.Parse(Precio_textbox.Text), int.Parse(PdP_textbox.Text));
             RefrescarListBox();
         }
         private void RefrescarListBox()
         {
             ingredientes_listBox.Items.Clear();
-            foreach (Ingrediente ingrediente in controlador.ListIngredientes)
+            foreach (Ingrediente ingrediente in Controlador.ListIngredientes)
             {
                 ingredientes_listBox.Items.Add(ingrediente); // Agrega los ingredientes a la ListBox
             }
