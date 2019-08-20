@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +56,7 @@ namespace ResetarioPochoclastico
 
             };
             ListIngredientes.Add(ingrediente);
+            Guardar();
         }
         public static void BorrarIngredientes(Ingrediente ingrediente)
         {
@@ -78,6 +81,17 @@ namespace ResetarioPochoclastico
                 Cantidad=cantidad
             };
             receta.Ingredientes.Add(recetaIngrediente);
+        }
+
+        //GUARDAR---------------
+
+        private static void Guardar()
+        {
+            using (StreamWriter ESCRITOR = new StreamWriter("ingrediente.json")) //StreamWriter crea o sobrescribe un archivo de texto
+            {
+                string ingredienteJson = JsonConvert.SerializeObject(ListIngredientes);
+                ESCRITOR.Write(ingredienteJson);
+            }
         }
 
 

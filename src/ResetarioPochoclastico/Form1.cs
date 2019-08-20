@@ -23,7 +23,7 @@ namespace ResetarioPochoclastico
             form2.ShowDialog();
         }
 
-     
+
         private void comprar_ingr_button_Click(object sender, EventArgs e)
         {
             Controlador.AgregarIngredientes(ingrediente_textbox.Text, int.Parse(Cantidad_textbox.Text), int.Parse(Precio_textbox.Text), int.Parse(PdP_textbox.Text));
