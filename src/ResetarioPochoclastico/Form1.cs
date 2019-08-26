@@ -15,6 +15,7 @@ namespace ResetarioPochoclastico
         public Form1()
         {
             InitializeComponent();
+            Controlador.Cargar(); // NO SABEMOS SI ESTA BIEn
         }
 
         private void Pasaje_Click(object sender, EventArgs e)
@@ -60,6 +61,11 @@ namespace ResetarioPochoclastico
                 Precio_textbox.Text = ingrediente.Costo.ToString();
                 PdP_textbox.Text = ingrediente.StockMinimo.ToString();
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

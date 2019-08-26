@@ -11,7 +11,7 @@ namespace ResetarioPochoclastico
      public static class  Controlador // clase estatica, se relaciona con las demas clases declarando solo con su nombre
     {
         public static List<Receta> ListRecetas { get; }
-        public static List<Ingrediente> ListIngredientes { get; }
+        public static List<Ingrediente> ListIngredientes { get; private set; }
         public static List<RecetaIngrediente> ListRecetaIngredientes { get; }
          static Controlador()
         {
@@ -61,6 +61,7 @@ namespace ResetarioPochoclastico
         public static void BorrarIngredientes(Ingrediente ingrediente)
         {
             ListIngredientes.Remove(ingrediente);
+            Guardar();
         }
         public static void ModIngrediente (Ingrediente ingrediente, string nombreIngrediente, int cantidad, decimal costoIngrediente, int puntoDePedido)
         {
@@ -68,6 +69,7 @@ namespace ResetarioPochoclastico
             ingrediente.Cantidad = cantidad;
             ingrediente.Costo = costoIngrediente;
             ingrediente.StockMinimo = puntoDePedido;
+            Guardar();
         }
         //-----
 
@@ -93,8 +95,15 @@ namespace ResetarioPochoclastico
                 ESCRITOR.Write(ingredienteJson);
             }
         }
-
-
-        //----------
+        
+        //CARGAR--------------------
+        public static void Cargar()
+        {
+            using (StreamReader LEYENTE = new StreamReader("ingrediente.json"))
+            {
+                string ingredienteJson = LEYENTE.ReadToEnd();//lee 
+                ListIngredientes = JsonConvert.DeserializeObject<List<Ingrediente>>(ingredienteJson);
+            }
+        }
     }
 }
