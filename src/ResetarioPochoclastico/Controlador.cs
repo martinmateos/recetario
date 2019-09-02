@@ -18,6 +18,7 @@ namespace ResetarioPochoclastico
             ListRecetas = new List<Receta>();
             ListIngredientes = new List<Ingrediente>();
             ListRecetaIngredientes = new List<RecetaIngrediente>();
+            Cargar();
         }
         //abm receta
         public static void AgregarReceta (string nombreReceta, List<RecetaIngrediente> ingredientes )
@@ -87,7 +88,7 @@ namespace ResetarioPochoclastico
 
         //GUARDAR---------------
 
-        private static void Guardar()
+        public static void Guardar()
         {
             using (StreamWriter ESCRITOR = new StreamWriter("ingrediente.json")) //StreamWriter crea o sobrescribe un archivo de texto
             {
@@ -99,6 +100,7 @@ namespace ResetarioPochoclastico
         //CARGAR--------------------
         public static void Cargar()
         {
+            if (File.Exists("ingrediente.json"))
             using (StreamReader LEYENTE = new StreamReader("ingrediente.json"))
             {
                 string ingredienteJson = LEYENTE.ReadToEnd();//lee 

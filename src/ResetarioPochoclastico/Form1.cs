@@ -15,7 +15,8 @@ namespace ResetarioPochoclastico
         public Form1()
         {
             InitializeComponent();
-            Controlador.Cargar(); // NO SABEMOS SI ESTA BIEn
+            Controlador.Cargar();
+         
         }
 
         private void Pasaje_Click(object sender, EventArgs e)
@@ -39,7 +40,7 @@ namespace ResetarioPochoclastico
 
         private void mod_ingr_button_Click(object sender, EventArgs e)
         {
-            Controlador.ModIngrediente(ingredientes_listBox.SelectedItem as Ingrediente, ingrediente_textbox.Text, int.Parse(Cantidad_textbox.Text), int.Parse(Precio_textbox.Text), int.Parse(PdP_textbox.Text));
+            Controlador.ModIngrediente(ingredientes_listBox.SelectedItem as Ingrediente, ingrediente_textbox.Text, int.Parse(Cantidad_textbox.Text), decimal.Parse(Precio_textbox.Text), int.Parse(PdP_textbox.Text));
             RefrescarListBox();
         }
         private void RefrescarListBox()
@@ -49,6 +50,7 @@ namespace ResetarioPochoclastico
             {
                 ingredientes_listBox.Items.Add(ingrediente); // Agrega los ingredientes a la ListBox
             }
+            Controlador.Guardar();
         }
 
         private void ingredientes_listBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,11 +63,14 @@ namespace ResetarioPochoclastico
                 Precio_textbox.Text = ingrediente.Costo.ToString();
                 PdP_textbox.Text = ingrediente.StockMinimo.ToString();
             }
+           
+           
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+         
         }
     }
 }
