@@ -14,9 +14,7 @@ namespace ResetarioPochoclastico
     {
         public Form1()
         {
-            InitializeComponent();
-            Controlador.Cargar();
-         
+            InitializeComponent();         
         }
 
         private void Pasaje_Click(object sender, EventArgs e)
@@ -69,7 +67,8 @@ namespace ResetarioPochoclastico
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Controlador.Cargar();
+            RefrescarListBox();
          
         }
     }

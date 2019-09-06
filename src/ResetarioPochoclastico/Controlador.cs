@@ -21,12 +21,12 @@ namespace ResetarioPochoclastico
             Cargar();
         }
         //abm receta
-        public static void AgregarReceta (string nombreReceta, List<RecetaIngrediente> ingredientes )
+        public static void AgregarReceta (string nombreReceta)
         {
             Receta receta = new Receta()
             {
-                Nombre=nombreReceta,
-                Ingredientes=ingredientes
+                Nombre = nombreReceta,
+                //Ingredientes = null
             };
             ListRecetas.Add(receta);
         }

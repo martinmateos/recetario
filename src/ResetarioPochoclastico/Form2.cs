@@ -23,7 +23,6 @@ namespace ResetarioPochoclastico
         {
 
         }
-
         private void IngredientesDisp_ListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Ingrediente ingrediente = IngredientesDisp_ListBox.SelectedItem as Ingrediente;
@@ -33,6 +32,7 @@ namespace ResetarioPochoclastico
             }
            
         }
+        //Refresca la lista de ingredientes disponibles
         private void RefrescarListBox()
         {
             IngredientesDisp_ListBox.Items.Clear();
@@ -48,23 +48,58 @@ namespace ResetarioPochoclastico
 
         private void IngredientesReceta_ListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+          
+        }
+
+        //Pasaje de ingrediente con su cantidad por el boton
+        private void UsarIngrediente_Button_Click(object sender, EventArgs e)
+        {
+            Ingrediente ingrediente = IngredientesDisp_ListBox.SelectedItem as Ingrediente;
+            Receta receta = recetas_listBox.SelectedItem as Receta;
+
+            if (receta!=null && ingrediente != null)
+            {
+                Controlador.AddRecetaIngrediente(receta, ingrediente, int.Parse(Cantidad_Textbox2.Text));
+                RefrescarListBoxRecetaIngrediente(receta);
+            }
             
         }
 
-        private void UsarIngrediente_Button_Click(object sender, EventArgs e)
+        private void RefrescarListBoxRecetaIngrediente(Receta receta)
         {
-            Ingrediente ingrediente = IngredientesDisp_ListBox.SelectedItem as Ingrediente; //Pasaje de ingrediente con su cantidad
-            RecetaIngrediente recetaIngrediente = new RecetaIngrediente()
+            if (receta != null)
             {
-               Cantidad=int.Parse(Cantidad_Textbox2.Text),
-               Ingrediente=ingrediente
-            };
-            IngredientesReceta_ListBox.Items.Add(recetaIngrediente);
+                IngredientesReceta_ListBox.Items.Clear();
+                foreach (RecetaIngrediente recetaIngrediente in receta.Ingredientes)
+                {
+                    IngredientesReceta_ListBox.Items.Add(recetaIngrediente);
+                }
+            }
+        }
+
+        private void RefrescarListBoxRecetas()
+        {
+            recetas_listBox.Items.Clear();
+            foreach (Receta receta in Controlador.ListRecetas)
+            {
+                recetas_listBox.Items.Add(receta);
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Cantidad_Textbox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void agregar_receta_button_Click(object sender, EventArgs e)
+        {
+            Controlador.AgregarReceta(NombreReceta_Textbox.Text);
+            RefrescarListBoxRecetas();
         }
     }
 }

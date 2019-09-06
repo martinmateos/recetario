@@ -73,6 +73,7 @@
             this.Cantidad_Textbox2.Name = "Cantidad_Textbox2";
             this.Cantidad_Textbox2.Size = new System.Drawing.Size(117, 20);
             this.Cantidad_Textbox2.TabIndex = 44;
+            this.Cantidad_Textbox2.TextChanged += new System.EventHandler(this.Cantidad_Textbox2_TextChanged);
             // 
             // UsarIngrediente_Button
             // 
@@ -86,6 +87,7 @@
             // 
             // IngredientesReceta_ListBox
             // 
+            this.IngredientesReceta_ListBox.DisplayMember = "DatosRecetaIngrediente";
             this.IngredientesReceta_ListBox.FormattingEnabled = true;
             this.IngredientesReceta_ListBox.Location = new System.Drawing.Point(375, 93);
             this.IngredientesReceta_ListBox.Name = "IngredientesReceta_ListBox";
@@ -145,6 +147,7 @@
             this.agregar_receta_button.TabIndex = 36;
             this.agregar_receta_button.Text = "Agregar receta";
             this.agregar_receta_button.UseVisualStyleBackColor = true;
+            this.agregar_receta_button.Click += new System.EventHandler(this.agregar_receta_button_Click);
             // 
             // hacer_button
             // 
@@ -184,6 +187,7 @@
             // 
             // recetas_listBox
             // 
+            this.recetas_listBox.DisplayMember = "MostrarDatosReceta";
             this.recetas_listBox.FormattingEnabled = true;
             this.recetas_listBox.Location = new System.Drawing.Point(32, 372);
             this.recetas_listBox.Name = "recetas_listBox";

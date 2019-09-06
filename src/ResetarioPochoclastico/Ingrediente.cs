@@ -16,7 +16,7 @@ namespace ResetarioPochoclastico
         {
             get
             {
-                return Nombre;
+                return Nombre + " / " + Cantidad;
             }
         }
     }

@@ -10,5 +10,12 @@ namespace ResetarioPochoclastico
     {
         public Ingrediente Ingrediente { get; set; }
         public int Cantidad { get; set; }
+        public string DatosRecetaIngrediente
+        {
+            get
+            {
+                return $"{Cantidad} {Ingrediente.Nombre}";
+            }
+        }
     }
 }
